@@ -52,15 +52,9 @@ return [
                 'name'          => 'logo',
                 'title'         => 'admin::app.admin.system.logo',
                 'type'          => 'image',
-                'validation'    => 'mimes:jpeg,bmp,png,jpg',
+                'validation'    => 'mimes:bmp,jpeg,jpg,png,webp',
                 'channel_based' => true,
             ],
-            [
-                'name'          => 'address',
-                'title'         => 'admin::app.admin.system.address',
-                'type'          => 'textarea',
-                'channel_based' => true,
-            ]
         ]
     ]
 ];

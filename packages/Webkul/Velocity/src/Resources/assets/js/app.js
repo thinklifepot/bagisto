@@ -7,7 +7,7 @@ import de from 'vee-validate/dist/locale/de';
 import ar from 'vee-validate/dist/locale/ar';
 import VeeValidate, { Validator } from 'vee-validate';
 import axios from 'axios';
-
+import 'lazysizes';
 
 window.axios = axios;
 window.VeeValidate = VeeValidate;
@@ -68,7 +68,7 @@ $(document).ready(function () {
                 'sharedRootCategories': [],
                 'responsiveSidebarTemplate': '',
                 'responsiveSidebarKey': Math.random(),
-                'baseUrl': document.querySelector("script[src$='velocity.js']").getAttribute('baseUrl'),
+                'baseUrl': document.querySelector("script[src$='velocity.js']").getAttribute('baseUrl')
             }
         },
 
@@ -165,11 +165,18 @@ $(document).ready(function () {
             },
 
             isMobile: function () {
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                  return true
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i|/mobi/i.test(navigator.userAgent)) {
+                    if (this.isMaxWidthCrossInLandScape()) {
+                        return false;
+                    }
+                    return true
                 } else {
-                  return false
+                    return false
                 }
+            },
+
+            isMaxWidthCrossInLandScape: function() {
+                return window.innerWidth > 900;
             },
 
             getDynamicHTML: function (input) {
@@ -211,7 +218,7 @@ $(document).ready(function () {
         }
     });
 
-    new Vue({
+    const app = new Vue({
         el: "#app",
         VueToast,
 
@@ -340,7 +347,7 @@ $(document).ready(function () {
             showLoader: function () {
                 $('#loader').show();
                 $('.overlay-loader').show();
-                
+
                 document.body.classList.add("modal-open");
             },
 
@@ -352,6 +359,8 @@ $(document).ready(function () {
             }
         }
     });
+
+    window.app = app;
 
     // for compilation of html coming from server
     Vue.component('vnode-injector', {

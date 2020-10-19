@@ -56,6 +56,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Admin URL
+    |--------------------------------------------------------------------------
+    |
+    | This URL suffix is used to define the admin url for example
+    | admin/ or backend/
+    |
+    */
+
+    'admin_url' => env('APP_ADMIN_URL', 'admin'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |
@@ -251,6 +263,7 @@ return [
         Webkul\Category\Providers\CategoryServiceProvider::class,
         Webkul\Attribute\Providers\AttributeServiceProvider::class,
         Webkul\Core\Providers\CoreServiceProvider::class,
+        Webkul\Core\Providers\EnvValidatorServiceProvider::class,
         Webkul\Shop\Providers\ShopServiceProvider::class,
         Webkul\Customer\Providers\CustomerServiceProvider::class,
         Webkul\Inventory\Providers\InventoryServiceProvider::class,

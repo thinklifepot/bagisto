@@ -13,11 +13,11 @@
                 @endphp
 
                 <div class="rango-view-grid-container {{ $viewOption === 'grid' ? 'active' : '' }}">
-                    <a href="{{ $toolbarHelper->getModeUrl('grid') }}" class="grid-view unset">
+                    <a href="{{ $toolbarHelper->getModeUrl('grid') }}" class="grid-view unset" aria-label="Grid">
                         <span class="rango-view-grid fs24"></span>
                     </a>
                 </div>
-                <div class="rango-view-list-container {{ $viewOption === 'list' ? 'active' : '' }}">
+                <div class="rango-view-list-container {{ $viewOption === 'list' ? 'active' : '' }}" aria-label="List">
                     <a
                         href="{{ $toolbarHelper->getModeUrl('list') }}"
                         class="list-view unset">
@@ -29,7 +29,7 @@
             <div class="sorter">
                 <label>{{ __('shop::app.products.sort-by') }}</label>
 
-                <select class="selective-div border-normal styled-select" onchange="window.location.href = this.value">
+                <select class="selective-div border-normal styled-select" onchange="window.location.href = this.value" aria-label="Sort By">
                     @foreach ($toolbarHelper->getAvailableOrders() as $key => $order)
                         <option value="{{ $toolbarHelper->getOrderUrl($key) }}" {{ $toolbarHelper->isOrderCurrent($key) ? 'selected' : '' }}>
                             {{ __('shop::app.products.' . $order) }}
@@ -45,7 +45,7 @@
             <div class="limiter">
                 <label>{{ __('shop::app.products.show') }}</label>
 
-                <select class="selective-div border-normal styled-select" onchange="window.location.href = this.value" style="width: 57px;">
+                <select class="selective-div border-normal styled-select" onchange="window.location.href = this.value" style="width: 57px;" aria-label="Show">
 
                     @foreach ($toolbarHelper->getAvailableLimits() as $limit)
 
@@ -96,17 +96,17 @@
             </div>
 
             <div class="col-4">
-                <a
-                    class="unset"
-                    href="{{
-                        $toolbarHelper->isOrderCurrent('name-asc')
-                        ? $toolbarHelper->getOrderUrl('name-asc')
-                        : $toolbarHelper->getOrderUrl('name-desc')
-                    }}">
-
+                <div class="sorter" id="sort-by">
                     <i class="material-icons">sort_by_alpha</i>
-                    <span>{{ __('shop::app.products.sort-by') }}</span>
-                </a>
+
+                    <select class="selective-div no-border" onchange="window.location.href = this.value">
+                        @foreach ($toolbarHelper->getAvailableOrders() as $key => $order)
+                            <option value="{{ $toolbarHelper->getOrderUrl($key) }}" {{ $toolbarHelper->isOrderCurrent($key) ? 'selected' : '' }}>
+                                {{ __('shop::app.products.' . $order) }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
 
             <div class="col-4">
@@ -154,7 +154,7 @@
                 methods: {
                     toggleLayeredNavigation: function ({event, actionType}) {
                         this.layeredNavigation = !this.layeredNavigation;
-                    }
+                    },
                 }
             })
         })()

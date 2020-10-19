@@ -117,6 +117,22 @@ input {
    }
 }
 
+/* Product Page Description */
+.details {
+    .description {
+        overflow: auto;
+    }
+
+    .accordian {
+        .accordian-content {
+            div {
+                overflow: auto;
+            }
+        }
+
+    }
+}
+
 /* Show the indicator (dot/circle) when checked */
 .radio-container input:checked ~ .checkmark:after {
     display: block;
@@ -188,9 +204,15 @@ input {
     }
 }
 
+/* if not very important use bootstrap 4 float-left and float-right class */
 .pull-right {
-    float:right;
+    float: right !important;
 }
+
+.pull-left {
+    float: left !important;
+}
+/* if not very important use bootstrap 4 float-left and float-right class */
 
 //wishlist icon hover properties
 .add-to-wishlist {
@@ -271,7 +293,6 @@ input {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 125px;
 
     .media-info {
         display: flex;
@@ -284,6 +305,7 @@ input {
 
         .info {
             margin-left: 20px;
+            margin-right: 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -296,7 +318,6 @@ input {
     }
 
     .operations {
-        height: 120px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -2438,6 +2459,7 @@ section.cart {
             flex-direction: column;
             justify-content: flex-start;
             width: 100%;
+            overflow-x: auto;
 
             .item-title {
                 font-size: 18px;
@@ -2829,6 +2851,23 @@ section.cart {
 
                 .control-info {
                     margin-left: 28px;
+                }
+
+                .instructions {
+                    margin-top: 10px;
+                    margin-left: 30px;
+
+                    label {
+                        font-weight: 600;
+                        font-size: 14px;
+                    }
+
+                    p {
+                        margin: 0;
+                        font-size: 14px;
+                        color: #777777;
+                        font-style: italic;
+                    }
                 }
             }
 
@@ -4051,6 +4090,7 @@ section.review {
     .main-container-wrapper .product-card .sticker {
         left: auto;
         right: 20px;
+        min-width: 52px;
     }
 
     .main-container-wrapper .product-card .cart-wish-wrap .addtocart {
@@ -4100,6 +4140,11 @@ section.review {
             .product-ratings .total-reviews {
                 margin-left: 0px;
                 margin-right: 15px;
+            }
+
+            .downloadable-container .link-list ul li a {
+                float: left;
+                margin-top: 3px;
             }
         }
     }
@@ -4286,10 +4331,6 @@ section.review {
         }
     }
 
-    .checkbox {
-        margin: 10px 0px 5px 5px;
-    }
-
     .radio {
         margin: 10px 0px 5px 5px;
 
@@ -4304,11 +4345,22 @@ section.review {
         }
     }
 
+    .radio-container .checkmark {
+        top: 2px;
+        left: 4px;
+    }
+
+    .mt-5 {
+        margin-top: 5px;
+        margin-right: 28px;
+    }
+
     @media only screen and (max-width: 770px) {
         .checkout-process .col-main {
             padding-left: 0px;
         }
     }
+
     //checkout process page end here
 
     //customer page start here
@@ -4340,6 +4392,7 @@ section.review {
 
     a.btn.btn-lg.btn-primary {
         float: left;
+        margin-right: 15px;
     }
 
     .account-item-card {
@@ -4589,6 +4642,14 @@ body {
     padding-top: 20px;
 }
 
+.mt-0 {
+    margin-top: 0px;
+}
+
+.desc > p {
+    margin-top: 0px;
+}
+
 .comparison-component > h1 {
     display: inline-block;
 }
@@ -4599,12 +4660,10 @@ td {
     max-width: 250px;
     line-height: 30px;
     vertical-align: top;
-    word-break: break-word;
 }
 
 .icon.remove-product {
     top: 5px;
-    float: right;
     cursor: pointer;
     position: relative;
     background-color: black;

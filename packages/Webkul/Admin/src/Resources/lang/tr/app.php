@@ -381,6 +381,7 @@ return [
             'title' => 'Faturalar',
             'id' => 'ID',
             'invoice-id' => 'Fatura No',
+            'invoice' => 'Fatura',
             'date' => 'Fatura Tarihi',
             'order-id' => 'Sipariş No',
             'customer-name' => 'Müşteri Adı',
@@ -1331,7 +1332,19 @@ return [
             'show-offers' => 'Teklifleri Göster',
             'show-sku' => 'Barkod Göster',
             'categories' => 'Kategoriler',
-            'show-search-input-field' => 'Arama Giriş Kutusu Göster'
+            'show-search-input-field' => 'Arama Giriş Kutusu Göster',
+            'store-name' => 'Dükkan adı',
+            'vat-number' => 'KDV Numarası',
+            'contact-number' => 'İletişim numarası',
+            'bank-details' => 'Banka detayları',
+            'mailing-address' => 'Send Check to',
+            'instructions' => 'Instructions',
+            'custom-scripts' => 'Custom Scripts',
+            'custom-css' => 'Custom CSS',
+            'custom-javascript' => 'Custom Javascript',
+            'paypal-smart-button' => 'Paypal Smart Button',
+            'client-id' => 'Client Id',
+            'client-id-info' => 'Use "sb" for testing.'
         ]
     ]
 ];

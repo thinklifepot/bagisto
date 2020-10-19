@@ -94,11 +94,15 @@
 
             @if ($field['type'] == 'text')
 
-                <input type="text" v-validate="'{{ $validations }}'" class="control" id="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" name="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" value="{{ old($name) ?: core()->getConfigData($name) }}" data-vv-as="&quot;{{ trans($field['title']) }}&quot;">
+                <input type="text" v-validate="'{{ $validations }}'" class="control" id="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" name="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" value="{{ old($name) ?: (core()->getConfigData($name) ? core()->getConfigData($name) : (isset($field['default_value']) ? $field['default_value'] : '')) }}" data-vv-as="&quot;{{ trans($field['title']) }}&quot;">
 
             @elseif ($field['type'] == 'password')
 
                 <input type="password" v-validate="'{{ $validations }}'" class="control" id="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" name="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" value="{{ old($name) ?: core()->getConfigData($name) }}" data-vv-as="&quot;{{ trans($field['title']) }}&quot;">
+            
+            @elseif ($field['type'] == 'number')
+
+                <input type="number" min="0" v-validate="'{{ $validations }}'" class="control" id="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" name="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" value="{{ old($name) ?: core()->getConfigData($name) }}" data-vv-as="&quot;{{ trans($field['title']) }}&quot;">
 
             @elseif ($field['type'] == 'color')
 
@@ -212,7 +216,7 @@
             @elseif ($field['type'] == 'boolean')
 
                 <?php $selectedOption = core()->getConfigData($name) ?? ''; ?>
-                                
+
                 <label class="switch">
                     <input type="hidden" name="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" value="0" />
                     <input type="checkbox" id="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" name="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" value="1" {{ $selectedOption ? 'checked' : '' }}>

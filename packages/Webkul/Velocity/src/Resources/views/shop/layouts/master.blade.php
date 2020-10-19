@@ -1,7 +1,7 @@
 @php
     $velocityHelper = app('Webkul\Velocity\Helpers\Helper');
     $velocityMetaData = $velocityHelper->getVelocityMetaData();
-    
+
     view()->share('velocityMetaData', $velocityMetaData);
 @endphp
 
@@ -19,7 +19,6 @@
 
         <link rel="stylesheet" href="{{ asset('themes/velocity/assets/css/velocity.css') }}" />
         <link rel="stylesheet" href="{{ asset('themes/velocity/assets/css/bootstrap.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('themes/velocity/assets/css/google-font.css') }}" />
 
         @if (core()->getCurrentLocale()->direction == 'rtl')
             <link href="{{ asset('themes/velocity/assets/css/bootstrap-flipped.css') }}" rel="stylesheet">
@@ -31,22 +30,6 @@
             <link rel="icon" sizes="16x16" href="{{ asset('/themes/velocity/assets/images/static/v-icon.png') }}" />
         @endif
 
-        <script
-            type="text/javascript"
-            src="{{ asset('themes/velocity/assets/js/jquery.min.js') }}">
-        </script>
-
-        <script
-            type="text/javascript"
-            baseUrl="{{ url()->to('/') }}"
-            src="{{ asset('themes/velocity/assets/js/velocity.js') }}">
-        </script>
-
-        <script
-            type="text/javascript"
-            src="{{ asset('themes/velocity/assets/js/jquery.ez-plus.js') }}">
-        </script>
-
         @yield('head')
 
         @section('seo')
@@ -57,6 +40,9 @@
 
         {!! view_render_event('bagisto.shop.layout.head') !!}
 
+        <style>
+            {!! core()->getConfigData('general.content.custom_scripts.custom_css') !!}
+        </style>
     </head>
 
     <body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif>
@@ -149,6 +135,22 @@
 
         <div id="alert-container"></div>
 
+        <script
+            type="text/javascript"
+            baseUrl="{{ url()->to('/') }}"
+            src="{{ asset('themes/velocity/assets/js/velocity.js') }}">
+        </script>
+
+        <script
+            type="text/javascript"
+            src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}">
+        </script>
+
+        <script
+            type="text/javascript"
+            src="{{ asset('themes/velocity/assets/js/jquery.ez-plus.js') }}">
+        </script>
+
         <script type="text/javascript">
             (() => {
                 window.showAlert = (messageType, messageLabel, message) => {
@@ -200,11 +202,10 @@
             })();
         </script>
 
-        <script
-            type="text/javascript"
-            src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}">
-        </script>
-
         @stack('scripts')
+
+        <script>
+            {!! core()->getConfigData('general.content.custom_scripts.custom_javascript') !!}
+        </script>
     </body>
 </html>
