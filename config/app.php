@@ -116,7 +116,7 @@ return [
     | Here you may specify the base currency code for your application.
     |
     */
-    
+
     'currency' => env('APP_CURRENCY', 'USD'),
 
     /*
@@ -269,6 +269,11 @@ return [
         Webkul\Velocity\Providers\VelocityServiceProvider::class,
         Webkul\BookingProduct\Providers\BookingProductServiceProvider::class,
         Webkul\SocialLogin\Providers\SocialLoginServiceProvider::class,
+
+        //Amaahia packages
+        Amaahia\HelloWorld\Providers\HelloWorldServiceProvider::class
+
+
     ],
 
     /*
